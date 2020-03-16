@@ -34,4 +34,13 @@ spec:
         volumeMounts:
         - name: tmp-dir
           mountPath: /tmp
-
+        args:
+          - --secure-port=4443
+          - --kubelet-insecure-tls
+          - --kubelet-preferred-address-types=InternalIP
+        ports:
+        - name: main-port
+          containerPort: 4443
+          protocol: TCP
+      hostNetwork: true
+      nodeName: baati
